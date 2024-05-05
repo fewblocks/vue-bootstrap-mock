@@ -2,6 +2,16 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+Vue + Bootstrap で、
++ トップページ、
++ 名言石碑ページ
++ コレクション
+のレイアウトを作る、
+各コンポーネントは、とりあえずモックをかまして、レイアウトの
+見本となるように作っていく。
+
+
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

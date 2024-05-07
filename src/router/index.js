@@ -1,5 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+
+/**
+ * クイズ quiz
+ * 名言石碑 aphorism
+ * コレクション collection
+ * ログイン、ログアウト login
+ * 
+ * のページの作成
+ * 
+ */
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [

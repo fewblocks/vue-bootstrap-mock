@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
+import MainVisual from "@/components/organisms/MainVisual.vue";
+import WordCloudVisual from "@/components/organisms/WordCloudVisual.vue";
 </script>
 
 <template>
-    <div>
-        top
-        <RouterLink to="sample-page-one">sampleOne</RouterLink>
-        <RouterLink to="sample-page-two">sampleTwo</RouterLink>
-    </div>
+    <main class="col-9" style="">
+        <section>
+            <MainVisual />
+        </section>
+        <section>
+            <WordCloudVisual />
+        </section>
+    </main>
+    <aside class="col-3">aside-content</aside>
 </template>
 
-<style scoped></style>
+<style scoped>
+aside {
+    background-color: darkgrey;
+}
+</style>

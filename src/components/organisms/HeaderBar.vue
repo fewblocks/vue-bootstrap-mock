@@ -19,7 +19,10 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
 
 <template>
     <!-- 「navbar-expand-md」 md以下のサイズのみトグルボタン表示 -->
-    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+    <nav
+        class="navbar fixed-top navbar-expand-md navbar-dark bg-dark"
+        role="navigation"
+    >
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Learnispirits</a>
             <!-- 「data-bs-target」="#切り替え表示されるコンテンツ名" -->
@@ -42,7 +45,7 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
                 <div class="navbar-nav navbar-collapse justify-content-between">
                     <!-- 等間隔でない場合は w-100 nav-justified 除去-->
                     <ul
-                        class="navbar-nav me-auto w-100 nav-justified text-align"
+                        class="navbar-nav me-auto w-50 nav-justified text-align"
                     >
                         <li class="nav-item active">
                             <a class="nav-link" href="#">クイズ</a>

@@ -1,0 +1,65 @@
+<script setup>
+import CardSlider3D from "@/components/flip-card/organisms/CardSlider3D.vue";
+import CardSlider2D from "@/components/flip-card/organisms/CardSlider2D.vue";
+import { ref } from "vue";
+import axios from "axios";
+const cardData = ref([]);
+const show = ref(false);
+const getDummyData = () => {
+    axios
+        // a.json,b.json,c.json から選ぶ
+        .get("src/assets/json/b.json")
+        .then((response) => {
+            // 仮データ作成
+            cardData.value = response.data.cardData;
+            show.value = true;
+        })
+        .catch((error) => console.log(error));
+};
+getDummyData();
+const selectedTab = ref("3d");
+
+const tabs = {
+    "3d": CardSlider3D,
+    "2d": CardSlider2D,
+};
+
+const changeComponent = () => {
+    if (selectedTab.value === "3d") {
+        selectedTab.value = "2d";
+        return;
+    }
+    if (selectedTab.value === "2d") {
+        selectedTab.value = "3d";
+        return;
+    }
+};
+</script>
+
+<template>
+    <div class="flip-card-demo-wrapper">
+        <div class="flip-card-demo col-9">
+            <template v-if="show">
+                <component
+                    :is="tabs[selectedTab]"
+                    :card-data="cardData"
+                ></component>
+            </template>
+            <button v-on:click="changeComponent">変更</button>
+        </div>
+    </div>
+</template>
+
+<style scoped>
+.flip-card-demo {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    height: 400px;
+}
+.flip-card-demo-wrapper {
+    width: 100%;
+    background-color: rgb(190, 233, 233);
+    padding-top: 30px;
+}
+</style>

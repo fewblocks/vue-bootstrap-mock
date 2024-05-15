@@ -5,6 +5,6 @@
 
 <style lang="scss" scoped>
 aside {
-    background-color: darkgrey;
+    background-color: #ffcc27;
 }
 </style>

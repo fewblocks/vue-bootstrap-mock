@@ -3,6 +3,7 @@ import { useRouter } from "vue-router";
 import { RouterView } from "vue-router";
 import HeaderBar from "@/components/organisms/HeaderBar.vue";
 import FooterBar from "@/components/organisms/FooterBar.vue";
+import MainVisual from "@/components/organisms/MainVisual.vue";
 
 // ルーティング
 const router = useRouter();
@@ -11,17 +12,15 @@ const router = useRouter();
 <template>
     <header>
         <HeaderBar />
+        <MainVisual />
     </header>
-    <div
-        class="row gx-0"
-        style="
-            padding-top: 56px;
-            display: flex;
-            justify-content: center;
-            max-width: 100%;
-        "
-    >
-        <RouterView />
+    <div class="main-content">
+        <div
+            class="row gx-0"
+            style="display: flex; justify-content: flex-start; max-width: 100%"
+        >
+            <RouterView />
+        </div>
     </div>
     <footer class="footer container-fluid mt-auto">
         <FooterBar />
@@ -30,14 +29,18 @@ const router = useRouter();
 
 <style scoped>
 .footer {
-    position: absolute;
+    position: relative;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 60px;
+    width: 100vw;
+    height: 300px;
     background-color: dimgrey;
     display: flex;
     justify-content: center;
+}
+.main-content {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 </style>

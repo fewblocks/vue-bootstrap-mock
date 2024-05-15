@@ -2,7 +2,7 @@
 import wordCloudSrc from "@/assets/word-cloud.png";
 </script>
 <template>
-    <div class="word-cloud-visual-wrapper col-12 pt-4">
+    <div class="word-cloud-visual-wrapper pt-4">
         <!-- row： 行 -->
         <img
             :src="wordCloudSrc"

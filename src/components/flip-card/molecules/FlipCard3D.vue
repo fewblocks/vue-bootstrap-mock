@@ -1,11 +1,73 @@
-<script setup>
-import { computed } from "vue";
-
+<script setup lang="ts">
+import { breakpoints } from "@/utils/breakpoints";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 const props = defineProps({
     ja: String,
     en: String,
     flip: Boolean,
 });
+
+// TODO: タイプファイル別切り出し
+type Breakpoints = keyof typeof breakpoints; // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+// メディアクエリーの判別値(windowオブジェクト)
+// let mediaQuery = window.matchMedia(`(max-width : ${breakpoints.xs})`);
+const mediaQuerySmall = window.matchMedia(`(max-width : ${breakpoints.sm})`);
+const isScreenSmall = ref(mediaQuerySmall.matches);
+const mediaQueryMedium = window.matchMedia(`(max-width : ${breakpoints.md})`);
+const isScreenMedium = ref(mediaQueryMedium.matches);
+const mediaQueryLarge = window.matchMedia(`(max-width : ${breakpoints.lg})`);
+const isScreenLarge = ref(mediaQueryLarge.matches);
+
+// カードサイズ判定
+// const cardWidth = computed(() => (isScreenSmall.value ? "168px" : "240px"));
+// const cardHeight = computed(() => (isScreenSmall.value ? "112px" : "160px"));
+
+// TODO: ひどすぎるので書き直す
+const cardWidth = computed(() => {
+    if (isScreenSmall.value) {
+        return "168px";
+    } else if (isScreenMedium.value) {
+        return "192px";
+    } else if (isScreenLarge.value) {
+        return "276px";
+    } else {
+        return "360px";
+    }
+});
+const cardHeight = computed(() => {
+    if (isScreenSmall.value) {
+        return "112px";
+    } else if (isScreenMedium.value) {
+        return "128px";
+    } else if (isScreenLarge.value) {
+        return "184px";
+    } else {
+        return "240px";
+    }
+});
+
+// カード間隔判定
+const cardBetween = (times: number, isScreenSmall: boolean) => {
+    if (isScreenSmall) {
+        return 32 * times + "px";
+    } else {
+        return 50 * times + "px";
+    }
+};
+
+// windowオブジェクトにリスナーを設定（メディアクエリー判別値随時更新）
+const updateSmall = (event: { matches: boolean }) =>
+    (isScreenSmall.value = event.matches);
+const updateMedium = (event: { matches: boolean }) =>
+    (isScreenMedium.value = event.matches);
+const updateLarge = (event: { matches: boolean }) =>
+    (isScreenLarge.value = event.matches);
+onMounted(() => mediaQuerySmall.addEventListener("change", updateSmall));
+onUnmounted(() => mediaQuerySmall.removeEventListener("change", updateSmall));
+onMounted(() => mediaQueryMedium.addEventListener("change", updateMedium));
+onUnmounted(() => mediaQueryMedium.removeEventListener("change", updateMedium));
+onMounted(() => mediaQueryLarge.addEventListener("change", updateLarge));
+onUnmounted(() => mediaQueryLarge.removeEventListener("change", updateLarge));
 
 const flipClass = computed(() => {
     return props.flip
@@ -27,8 +89,8 @@ const flipClass = computed(() => {
 .flip-card {
     position: absolute;
     background-color: transparent;
-    width: 240px;
-    height: 160px;
+    width: v-bind(cardWidth);
+    height: v-bind(cardHeight);
     -webkit-transform: skew(-20deg) rotate(-20deg) rotateX(-20deg)
         rotateY(-20deg) perspective(200px);
     transform: skew(-20deg) rotate(-20deg) rotateX(-20deg) rotateY(-20deg)
@@ -90,25 +152,25 @@ const flipClass = computed(() => {
 
 .flip-card:nth-of-type(2) {
     top: 10px;
-    left: 100px;
+    left: v-bind(cardBetween(2, isScreenSmall));
     opacity: 0.4;
 }
 
 .flip-card:nth-of-type(3) {
     top: 20px;
-    left: 150px;
+    left: v-bind(cardBetween(3, isScreenSmall));
     opacity: 0.6;
 }
 
 .flip-card:nth-of-type(4) {
     top: 30px;
-    left: 200px;
+    left: v-bind(cardBetween(4, isScreenSmall));
     opacity: 0.8;
 }
 
 .flip-card:nth-of-type(5) {
     top: 40px;
-    left: 250px;
+    left: v-bind(cardBetween(5, isScreenSmall));
     opacity: 1;
     -webkit-transform: skew(-0deg) rotate(-0deg) rotateX(-0deg) rotateY(-0deg)
         perspective(0px);
@@ -118,7 +180,7 @@ const flipClass = computed(() => {
 
 .flip-card:nth-of-type(6) {
     top: 50px;
-    left: 300px;
+    left: v-bind(cardBetween(6, isScreenSmall));
     opacity: 0;
     -webkit-transform: skew(-40deg) rotate(-40deg) rotateX(-40deg)
         rotateY(-40deg) perspective(200px);

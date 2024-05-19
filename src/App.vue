@@ -29,6 +29,7 @@ const router = useRouter();
 
 <style scoped>
 .footer {
+    max-width: 100%;
     position: relative;
     right: 0;
     bottom: 0;
@@ -41,6 +42,8 @@ const router = useRouter();
 }
 .main-content {
     max-width: 1280px;
+    /* TODO: 暫定値、モバイル対応のEため正式な設定値が必要 */
+    min-width: 375px;
     margin: 0 auto;
 }
 </style>

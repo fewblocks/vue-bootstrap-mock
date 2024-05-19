@@ -20,7 +20,7 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
 <template>
     <!-- 「navbar-expand-md」 md以下のサイズのみトグルボタン表示 -->
     <nav
-        class="navbar fixed-top navbar-expand-md navbar-dark bg-dark"
+        class="navbar fixed-top navbar-expand-md navbar-light"
         role="navigation"
     >
         <div class="container-fluid">
@@ -66,7 +66,7 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
                     >
                         <li class="nav-item active">
                             <button
-                                class="btn btn-light my-2 my-sm-0 w"
+                                class="btn btn-primary my-2 my-sm-0 w"
                                 type="submit"
                             >
                                 ログイン
@@ -85,6 +85,8 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
 }
 
 .fixed-top {
+    width: 100vw;
+    background-color: cornsilk;
     position: fixed;
     top: 0;
     right: 0;

@@ -7,7 +7,7 @@ import FlipCardDemo from "@/components/flip-card/FlipCardDemo.vue";
 </script>
 
 <template>
-    <main class="col-9" style="">
+    <main class="col-sm-12 col-md-9">
         <section>
             <WordCloudVisual />
         </section>
@@ -21,7 +21,7 @@ import FlipCardDemo from "@/components/flip-card/FlipCardDemo.vue";
             <RelatedSite />
         </section>
     </main>
-    <aside class="col-3">aside-content</aside>
+    <aside class="col-sm-12 col-md-3">aside-content</aside>
 </template>
 
 <style scoped>

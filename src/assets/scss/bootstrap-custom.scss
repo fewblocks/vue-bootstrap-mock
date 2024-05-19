@@ -1,0 +1,21 @@
+// bootstrap の変数設定用ファイル
+
+$primary: red;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+) !default;
+
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
+// @import "/node_modules/bootstrap-vue-next/src/styles/styles.scss";
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px
+// ) !default;

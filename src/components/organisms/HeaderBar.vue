@@ -39,7 +39,7 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div
-                class="collapse navbar-collapse justify-content-between"
+                class="collapse navbar-collapse justify-content-between px-3"
                 id="learnispirits-menu"
             >
                 <div class="navbar-nav navbar-collapse justify-content-between">

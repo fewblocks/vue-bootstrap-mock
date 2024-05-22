@@ -102,9 +102,17 @@ const flip = () => {
 </template>
 
 <style scoped>
-.slider-wrapper {
-    height: 90%;
-    margin-top: 90px;
+@media (0px <= width <= 576px) {
+    .slider-wrapper {
+        height: 90%;
+        margin-top: 0px;
+    }
+}
+@media (575px <= width) {
+    .slider-wrapper {
+        height: 90%;
+        margin-top: 90px;
+    }
 }
 
 .card-slider-3d-wrapper {
@@ -120,6 +128,8 @@ const flip = () => {
 
 .slider-controller {
     height: 10%;
+    position: absolute;
+    bottom: 27px;
 }
 .slider-3d {
 }

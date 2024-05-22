@@ -51,11 +51,21 @@ const changeComponent = () => {
 </template>
 
 <style scoped>
-.flip-card-demo {
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    height: 400px;
+@media (577px <= width) {
+    .flip-card-demo {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        height: 400px;
+    }
+}
+@media (0px <= width <= 576px) {
+    .flip-card-demo {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        height: 250px;
+    }
 }
 .flip-card-demo-wrapper {
     width: 100%;

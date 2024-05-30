@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { RouterView } from "vue-router";
 import HeaderBar from "@/components/organisms/HeaderBar.vue";
 import FooterBar from "@/components/organisms/FooterBar.vue";
@@ -7,12 +7,17 @@ import MainVisual from "@/components/organisms/MainVisual.vue";
 
 // ルーティング
 const router = useRouter();
+const route = useRoute();
+route.name;
 </script>
 
 <template>
     <header>
         <HeaderBar />
-        <MainVisual />
+        <!-- Topページのみ -->
+        <template v-if="route.name === 'top'">
+            <MainVisual />
+        </template>
     </header>
     <div class="main-content">
         <div

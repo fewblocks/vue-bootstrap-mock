@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 
 const props = defineProps<{
-    id: Number;
+    id: number;
     top: Number;
     left: Number;
     line: String;
@@ -23,7 +23,11 @@ onMounted(() => {
 </script>
 <template>
     <transition name="slide-fade">
-        <div class="speech-balloon" v-if="show">{{ $props.line }}</div>
+        <div class="speech-balloon" v-if="show">
+            <div class="speech-ballon-line">
+                {{ $props.line }}
+            </div>
+        </div>
     </transition>
 </template>
 
@@ -53,10 +57,18 @@ onMounted(() => {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    border: #b7c1ff solid 5px;
+    border: #b7c1ff solid 3px;
+    z-index: v-bind("id * 3");
 }
 
-.speech-bubble:after {
+.speech-ballon-line {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: v-bind("id * 3 + 1");
+}
+
+.speech-ballon-line:after {
     content: "";
     position: absolute;
     border-style: solid;
@@ -64,12 +76,12 @@ onMounted(() => {
     border-color: #ebffff transparent;
     display: block;
     width: 0;
-    z-index: 1;
+    z-index: v-bind("id * 3 + 2");
     bottom: -19px;
     left: 45px;
 }
 
-.speech-bubble:before {
+.speech-ballon-line:before {
     content: "";
     position: absolute;
     border-style: solid;
@@ -77,8 +89,8 @@ onMounted(() => {
     border-color: #b7c1ff transparent;
     display: block;
     width: 0;
-    z-index: 0;
-    bottom: -28px;
+    z-index: v-bind("id * 3 + 1");
+    bottom: -25px;
     left: 41px;
 }
 </style>

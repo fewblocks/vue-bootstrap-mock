@@ -8,7 +8,7 @@ import AphorismVisual from "@/components/organisms/AphorismVisual.vue";
 <template>
     <main class="col-sm-12 col-md-9">
         <section>
-            <div class="mt-5">
+            <div style="margin-top: 56px">
                 <AphorismMenu />
 
                 <AphorismVisual />
@@ -18,7 +18,9 @@ import AphorismVisual from "@/components/organisms/AphorismVisual.vue";
             <SpeechBalloons />
         </section>
     </main>
-    <aside class="col-sm-12 col-md-3">aside-content</aside>
+    <aside class="col-sm-12 col-md-3" style="margin-top: 56px">
+        aside-content
+    </aside>
 </template>
 
 <style scoped>

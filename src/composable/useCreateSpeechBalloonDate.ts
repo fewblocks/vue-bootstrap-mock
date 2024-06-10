@@ -34,6 +34,7 @@ const useCreateSpeechBalloonDate = (lines: string[]) => {
             left: getRandomInt(0, 90),
             line: shuffledLines[i], // シャッフルされたlines配列から重複なしで選択
             directions: randomDirection,
+            transform: Math.random() * (1.2 - 0.8) + 0.8,
         };
 
         // objects配列に追加

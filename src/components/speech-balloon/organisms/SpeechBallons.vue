@@ -19,7 +19,7 @@ const lines = [
 const speechBalloonData = useCreateSpeechBalloonDate(lines);
 </script>
 <template>
-    <div class="speech-balloon-content">
+    <div class="speech-balloon-content ml-auto mx-auto col-11">
         <template v-for="balllon in speechBalloonData" :key="balllon.id">
             <SpeechBalloon
                 :id="balllon.id"
@@ -27,6 +27,7 @@ const speechBalloonData = useCreateSpeechBalloonDate(lines);
                 :left="balllon.left"
                 :line="balllon.line"
                 :directions="balllon.directions"
+                :transform="balllon.transform"
             />
         </template>
     </div>
@@ -36,7 +37,6 @@ const speechBalloonData = useCreateSpeechBalloonDate(lines);
 .speech-balloon-content {
     position: relative;
     background-color: gray;
-    width: 100%;
     height: 500px;
     padding-top: 100px;
     overflow: hidden;

@@ -7,6 +7,7 @@ const props = defineProps<{
     left: Number;
     line: String;
     directions: String;
+    transform: Number;
 }>();
 
 const show = ref(false);
@@ -59,6 +60,8 @@ onMounted(() => {
     border-radius: 10px;
     border: #b7c1ff solid 3px;
     z-index: v-bind("id * 3");
+    transform: scale(v-bind(transform));
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .speech-ballon-line {

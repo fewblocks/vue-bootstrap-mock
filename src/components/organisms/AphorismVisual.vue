@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import aphorismVisual from "@/assets/aphorism-image.png";
-
-// C:\develop\Learnispirits\repository\repo\vue-bootstrap-mock\src\assets\aphorism-image.png
 </script>
 <template>
     <div class="aphorism-visual-wrapper">
@@ -13,11 +11,6 @@ import aphorismVisual from "@/assets/aphorism-image.png";
         />
     </div>
 </template>
-<!-- <style lang="scss" scoped>
-.card-footer {
-    background-color: v-bind(color);
-}
-</style> -->
 
 <style lang="scss" scoped>
 .aphorism-visual-wrapper {

@@ -10,7 +10,14 @@ defineProps<{
             <p>ジョジョの奇妙な冒険</p>
             <p>スピードワゴンの名言1</p>
         </div>
-        <div class="" style="display: flex; justify-content: space-between">
+        <div
+            class=""
+            style="
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+            "
+        >
             <div>
                 <button class="btn btn-primary my-2 my-sm-0 w" type="submit">
                     dowwnload

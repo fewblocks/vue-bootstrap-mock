@@ -1,6 +1,14 @@
+<!-- 3Dフリップカード(個別)コンポーネント -->
 <script setup lang="ts">
 import { breakpoints } from "@/utils/breakpoints";
 import { ref, computed, onMounted, onUnmounted } from "vue";
+
+/**
+ * Props
+ * @param { String } ja 日本語
+ * @param { String } en 英語
+ * @param { Boolean } flip 裏返しフラグ
+ */
 const props = defineProps({
     ja: String,
     en: String,
@@ -23,6 +31,7 @@ const isScreenLarge = ref(mediaQueryLarge.matches);
 // const cardHeight = computed(() => (isScreenSmall.value ? "112px" : "160px"));
 
 // TODO: ひどすぎるので書き直す
+/** カード幅算出。メディアクエリー依存 */
 const cardWidth = computed(() => {
     if (isScreenSmall.value) {
         return "168px";
@@ -34,6 +43,7 @@ const cardWidth = computed(() => {
         return "360px";
     }
 });
+/** カード高さ算出。メディアクエリー依存 */
 const cardHeight = computed(() => {
     if (isScreenSmall.value) {
         return "112px";
@@ -46,7 +56,7 @@ const cardHeight = computed(() => {
     }
 });
 
-// カード間隔判定
+/** カード間隔判定。メディアクエリー依存 */
 const cardBetween = (times: number, isScreenSmall: boolean) => {
     if (isScreenSmall) {
         return 32 * times + "px";
@@ -69,6 +79,9 @@ onUnmounted(() => mediaQueryMedium.removeEventListener("change", updateMedium));
 onMounted(() => mediaQueryLarge.addEventListener("change", updateLarge));
 onUnmounted(() => mediaQueryLarge.removeEventListener("change", updateLarge));
 
+/**
+ * カードのクラス値。 親コンポーネントからの flip のフラグ値にて算出
+ */
 const flipClass = computed(() => {
     return props.flip
         ? "flip-card-inner flip-card-backback"
@@ -76,6 +89,7 @@ const flipClass = computed(() => {
 });
 </script>
 
+<!-- フリップカード -->
 <template>
     <div class="flip-card">
         <div :class="flipClass">
@@ -99,7 +113,6 @@ const flipClass = computed(() => {
     transition: 0.9s;
 }
 
-/* This container is needed to position the front and back side */
 .flip-card-inner {
     position: relative;
     width: 100%;
@@ -108,10 +121,6 @@ const flipClass = computed(() => {
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
-
-/* .flip-card:hover .flip-card-inner {
-  transform: rotateX(180deg);
-} */
 
 .flip-card-front,
 .flip-card-back {

@@ -13,7 +13,7 @@ route.name;
 
 <template>
     <header>
-        <!-- Topページのみ -->
+        <!-- Topページのみメインビジュアル表示 -->
         <template v-if="route.name === 'top'">
             <MainVisual />
         </template>
@@ -21,6 +21,7 @@ route.name;
             <div></div>
         </temlate>
     </header>
+    <!-- ナビゲーションバー -->
     <Navbar />
     <div class="main-content">
         <div
@@ -30,6 +31,7 @@ route.name;
             <RouterView />
         </div>
     </div>
+    <!-- フッター -->
     <footer class="footer container-fluid mt-auto">
         <FooterBar />
     </footer>

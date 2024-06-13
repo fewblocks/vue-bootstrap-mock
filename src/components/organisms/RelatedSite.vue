@@ -1,9 +1,11 @@
-<script setup>
-import relatedSiteImage from "@/assets/related-site-image.png";
+<!-- 姉妹サイト情報 -->
+<script setup lang="ts">
 import RelatedSiteCard from "../molecules/RelatedSiteCard.vue";
+import type { RelatedSiteData } from "@/types/RelatedSiteData";
+
 import { ref } from "vue";
 
-const relatedSiteData = ref([
+const relatedSiteData = ref<RelatedSiteData[]>([
     {
         id: 1,
         title: "ナルト",
@@ -33,9 +35,13 @@ const relatedSiteData = ref([
 <template>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 px-3 g-4 w-100">
         <template v-for="relatedSite in relatedSiteData">
+            <!-- 姉妹サイト情報カード -->
             <RelatedSiteCard v-bind:color="relatedSite.color">
+                <!-- タイトル -->
                 <template #title>{{ relatedSite.title }}</template>
+                <!-- 説明 -->
                 <template #description>{{ relatedSite.description }}</template>
+                <!-- メッセージ -->
                 <template #message>{{ relatedSite.message }}</template>
             </RelatedSiteCard>
         </template>

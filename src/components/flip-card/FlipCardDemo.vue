@@ -1,4 +1,5 @@
-<script setup>
+<!-- フリップカードデモコンポーネント -->
+<script setup lang="ts">
 import CardSlider3D from "@/components/flip-card/organisms/CardSlider3D.vue";
 import CardSlider2D from "@/components/flip-card/organisms/CardSlider2D.vue";
 import { ref } from "vue";
@@ -24,6 +25,7 @@ const tabs = {
     "2d": CardSlider2D,
 };
 
+/** 3D => 2D フリップカード切り替え機構*/
 const changeComponent = () => {
     if (selectedTab.value === "3d") {
         selectedTab.value = "2d";

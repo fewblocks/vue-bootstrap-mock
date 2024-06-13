@@ -1,9 +1,9 @@
+<!-- 吹き出しコンポーネント -->
 <script type="ts" setup>
 import SpeechBalloon from "@/components/speech-balloon/molecules/SpeechBallon.vue";
 import useCreateSpeechBalloonDate from "@/composable/useCreateSpeechBalloonDate"
 
-
-// 配列の宣言
+// セリフ配列宣言
 const lines = [
     "あああああああああああああああああああああ",
     "あああああああああああああああああああああああああああああ",
@@ -16,10 +16,12 @@ const lines = [
     "あああああああああああああああああああああああ",
     "ああああああああああああああああああああああああああああああああ",
 ];
+// 吹き出し用データ生成
 const speechBalloonData = useCreateSpeechBalloonDate(lines);
 </script>
 <template>
     <div class="speech-balloon-content ml-auto mx-auto col-11">
+        <!-- 吹き出し -->
         <template v-for="balllon in speechBalloonData" :key="balllon.id">
             <SpeechBalloon
                 :id="balllon.id"

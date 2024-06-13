@@ -1,11 +1,16 @@
-<script setup>
-import { reactive, ref } from "vue";
+<!-- ニュースコンテンツ -->
+<script setup lang="ts">
+import { ref } from "vue";
+import type { NewsData } from "@/types/NewsData";
 import NewsCard from "../molecules/NewsCard.vue";
 
-// 色の配列を作って上から順番に流し込んでいく、,,,,X
+// TODO: 色の配列を作って上から順番に流し込んでいく
+// カラーセットというか、専用の色セットを一つのまとまりとして「news-colors」
+// みたいな命名をしてもいいかもしれない。
 // CSSで作る！
 const colors = [];
-const newsData = ref([
+// 新着情報データ(API想定)
+const newsData = ref<NewsData[]>([
     {
         id: 1,
         new: "CommingSoon!",
@@ -30,11 +35,15 @@ const newsData = ref([
 ]);
 </script>
 <template>
+    <!-- ニュースコンテンツ -->
     <div class="news">
         <template v-for="news in newsData">
             <NewsCard v-bind:color="news.color">
+                <!-- 新着情報テキスト -->
                 <template #new>{{ news.new }}</template>
+                <!-- 予定日時 -->
                 <template #time>{{ news.time }}</template>
+                <!-- メッセージ -->
                 <template #message>{{ news.message }}</template>
             </NewsCard>
         </template>

@@ -1,7 +1,7 @@
+/** 吹き出し用データ生成ロジック */
 import { type SpeechBalloon } from "@/components/speech-balloon/type";
-
 const useCreateSpeechBalloonDate = (lines: string[]) => {
-    var directions = ["top", "right", "left", "bottom"];
+    var directions = ["right", "left"];
 
     // 配列をシャッフルする関数 (Fisher-Yatesアルゴリズム)
     function shuffle(array: string[]) {
@@ -30,8 +30,8 @@ const useCreateSpeechBalloonDate = (lines: string[]) => {
         // オブジェクトの生成
         const obj: SpeechBalloon = {
             id: i + 1,
-            top: getRandomInt(0, 90),
-            left: getRandomInt(0, 90),
+            top: getRandomInt(0, 80),
+            left: getRandomInt(0, 80),
             line: shuffledLines[i], // シャッフルされたlines配列から重複なしで選択
             directions: randomDirection,
             transform: Math.random() * (1.2 - 0.8) + 0.8,

@@ -1,9 +1,10 @@
+<!-- 名言石碑イメージ -->
 <script setup lang="ts">
 import aphorismVisual from "@/assets/aphorism-image.png";
 </script>
 <template>
+    <!-- 名言石碑イメージ -->
     <div class="aphorism-visual-wrapper">
-        <!-- row： 行 -->
         <img
             :src="aphorismVisual"
             class="aphorism-visual img-fluid"
@@ -20,7 +21,7 @@ import aphorismVisual from "@/assets/aphorism-image.png";
     margin: 0 auto;
     .aphorism-visual {
         background-color: red;
-        max-width: 100%;
+        width: 90%;
         height: auto;
     }
 }

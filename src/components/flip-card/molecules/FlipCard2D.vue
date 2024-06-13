@@ -1,6 +1,15 @@
-<script setup>
+<!-- 2Dフリップカード(個別)コンポーネント -->
+<script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import arrowimg from "@/assets/arrow-icon.svg";
+
+/**
+ * Props
+ * @param { String } ja 日本語
+ * @param { String } en 英語
+ * @param { Boolean } flip 裏返しフラグ
+ * @param { Number } id カードid
+ */
 const props = defineProps({
     ja: String,
     en: String,
@@ -8,17 +17,22 @@ const props = defineProps({
     id: Number,
 });
 
+/**
+ * カードのクラス値。 親コンポーネントからの flip のフラグ値にて算出
+ */
 const flipClass = computed(() => {
     return props.flip
         ? "flip-card-inner flip-card-backback"
         : "flip-card-inner";
 });
 
+/** 呼び出し元へ伝播イベント */
 const emit = defineEmits(["change-flip"]);
 
-const handleCard = () => {
+/** カードフリップハンドラー */
+const handleCardFlip = () => {
     const flipStatus = props.flip === true ? false : true;
-    // 呼び出し元へ「TODOListタイトル」と「TODOList詳細」を伝播
+    // 呼び出し元へ「cardId」と「flipStatus(裏返っているか否か)」を伝播
     emit("change-flip", { cardId: props.id, fliped: flipStatus });
 };
 </script>
@@ -26,18 +40,20 @@ const handleCard = () => {
     <div class="card">
         <div class="flip-card">
             <div :class="flipClass">
+                <!-- フリップカード表面 -->
                 <div class="flip-card-front">
                     {{ props.ja }}
                     <img
-                        v-on:click="handleCard"
+                        v-on:click="handleCardFlip"
                         class="arrow-img"
                         :src="arrowimg"
                     />
                 </div>
+                <!-- フリップカード裏面 -->
                 <div class="flip-card-back">
                     {{ props.en }}
                     <img
-                        v-on:click="handleCard"
+                        v-on:click="handleCardFlip"
                         class="arrow-img"
                         :src="arrowimg"
                     />

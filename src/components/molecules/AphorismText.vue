@@ -1,30 +1,35 @@
+<!-- 石碑画面 石碑テキストコンポーネント -->
 <script setup lang="ts">
 import squareIcon from "@/assets/square-icon.png";
-defineProps<{
-    // english?: string;
-    // japanese?: string;
-}>();
 </script>
 
 <template>
-    <div class="aphorism-text">
+    <div class="aphorism-text mb-3">
         <div
-            class="ml-auto mx-auto col-9"
+            class="mb-ml-auto mb-mx-auto col-10"
             style="display: flex; justify-content: start"
         >
+            <!-- アイコン -->
             <div class="icon col-2 ml-auto mx-auto">
                 <img
                     :src="squareIcon"
-                    class="card-img-top d-block ml-auto mx-auto mb-5"
+                    class="card-img-top d-block ml-auto mx-auto mb-5 mt-5"
                     style="height: 60px; width: 60px"
                     alt="..."
                 />
             </div>
-            <div class="col-10">
-                <div class="text"><slot name="english"></slot></div>
-                <div class="text"><slot name="japanese"></slot></div>
-                <div class="text"><slot name="quote"></slot></div>
-                <div class="text"><slot name="description"></slot></div>
+            <!-- 石碑テキスト -->
+            <div
+                class="col-10 mb-col12 d-flex row justify-content-center pt-3 pb-3"
+            >
+                <!-- 英文 -->
+                <slot name="english"></slot>
+                <!-- 日本文 -->
+                <slot name="japanese"></slot>
+                <!-- 引用文 -->
+                <slot name="quote"></slot>
+                <!-- 説明文 -->
+                <slot name="description"></slot>
             </div>
         </div>
     </div>

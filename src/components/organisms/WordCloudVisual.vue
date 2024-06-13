@@ -1,9 +1,10 @@
-<script setup>
+<!-- ワードクラウド -->
+<script setup lang="ts">
 import wordCloudSrc from "@/assets/word-cloud.png";
 </script>
 <template>
+    <!-- ワードクラウト -->
     <div class="word-cloud-visual-wrapper pt-4">
-        <!-- row： 行 -->
         <img
             :src="wordCloudSrc"
             class="word-cloud-visual img-fluid"

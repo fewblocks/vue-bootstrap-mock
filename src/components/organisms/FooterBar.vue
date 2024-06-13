@@ -1,4 +1,5 @@
-<script setup></script>
+<!-- フッターバー -->
+<script setup lang="ts"></script>
 <template>
     <div class="footer-bar">
         <p class="text-muted">Place sticky footer content here.</p>

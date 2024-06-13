@@ -1,6 +1,12 @@
-<script setup>
+<!-- 3Dカードスライダー（コントローラー）コンポーネント -->
+<script setup lang="ts">
 import FlipCard3D from "@/components/flip-card/molecules/FlipCard3D.vue";
 import { ref, toRaw } from "vue";
+
+/**
+ * Props
+ * @param { Array } cardData カード情報配列
+ */
 const props = defineProps({
     cardData: Array,
     default: () => [],
@@ -85,13 +91,14 @@ const flip = () => {
 <template>
     <div class="slider-wrapper">
         <div class="card-slider-3d-wrapper row gx-0 gy-0">
+            <!-- フリップカード -->
             <div class="slider-3d col-12 gx-0 gy-0">
                 <template v-for="item in items" :key="item.id">
                     <FlipCard3D :ja="item.ja" :en="item.en" :flip="item.flip">
                     </FlipCard3D>
                 </template>
             </div>
-
+            <!-- 操作ボタン -->
             <div class="slider-controller">
                 <button v-on:click="next()">進める</button>
                 <button v-on:click="prev()">戻す</button>

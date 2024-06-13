@@ -1,20 +1,41 @@
+<!-- 吹き出し（個別） -->
 <script lang="ts" setup>
 import { ref, computed, onMounted } from "vue";
 
+/**
+ * Props
+ * @param { number } id
+ * @param { number } top ポジション値 ランダム
+ * @param { number } left ポジション値 ランダム
+ * @param { string } line 吹き出し用セリフテキスト
+ * @param { string } directions 吹き出し位置
+ * @param { string } transform 拡大比率 ランダム値
+ */
 const props = defineProps<{
     id: number;
-    top: Number;
-    left: Number;
-    line: String;
-    directions: String;
-    transform: Number;
+    top: number;
+    left: number;
+    line: string;
+    directions: string | "right" | "left";
+    transform: number;
 }>();
 
-const show = ref(false);
+/** 表示非表示 */
+const show = ref<boolean>(false);
+
+/** ポジション計算値 */
 const positions = computed(() => {
     return {
         top: props.top + "%",
         left: props.left + "%",
+    };
+});
+
+/** ポジション計算値 */
+const directions = computed(() => {
+    return {
+        leftMain: props.directions === "left" ? "15%" : "85%",
+        leftSub: props.directions === "left" ? "14%" : "86%",
     };
 });
 
@@ -23,6 +44,7 @@ onMounted(() => {
 });
 </script>
 <template>
+    <!-- 吹き出し -->
     <transition name="slide-fade">
         <div class="speech-balloon" v-if="show">
             <div class="speech-ballon-line">
@@ -49,8 +71,6 @@ onMounted(() => {
 
 .speech-balloon {
     position: absolute;
-    width: 250px;
-    height: 120px;
     padding: 0px;
     top: v-bind("positions.top");
     left: v-bind("positions.left");
@@ -62,6 +82,28 @@ onMounted(() => {
     z-index: v-bind("id * 3");
     transform: scale(v-bind(transform));
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+}
+
+@media (768px <= width) {
+    .speech-balloon {
+        font-size: 16px;
+        width: 250px;
+        height: 120px;
+    }
+}
+@media (577px <= width <=768px) {
+    .speech-balloon {
+        font-size: 12px;
+        width: 175px;
+        height: 84px;
+    }
+}
+@media (0px <= width <= 576px) {
+    .speech-balloon {
+        font-size: 10px;
+        width: 140px;
+        height: 74px;
+    }
 }
 
 .speech-ballon-line {
@@ -81,7 +123,7 @@ onMounted(() => {
     width: 0;
     z-index: v-bind("id * 3 + 2");
     bottom: -19px;
-    left: 45px;
+    left: v-bind("directions.leftMain");
 }
 
 .speech-ballon-line:before {
@@ -94,6 +136,6 @@ onMounted(() => {
     width: 0;
     z-index: v-bind("id * 3 + 1");
     bottom: -25px;
-    left: 41px;
+    left: v-bind("directions.leftSub");
 }
 </style>

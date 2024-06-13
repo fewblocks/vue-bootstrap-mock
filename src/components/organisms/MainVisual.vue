@@ -1,9 +1,10 @@
-<script setup>
+<!-- メインビジュアル -->
+<script setup lang="ts">
 import topVisual from "@/assets/top-visual.png";
 </script>
 <template>
     <div class="top-visual-wrapper">
-        <!-- row： 行 -->
+        <!-- メインビジュアル画像 -->
         <img :src="topVisual" class="top-visual img-fluid" alr="top画像" />
     </div>
 </template>

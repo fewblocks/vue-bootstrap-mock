@@ -1,3 +1,4 @@
+<!-- ナビゲーションバー -->
 <script setup lang="ts">
 import { breakpoints } from "@/utils/breakpoints";
 import { ref, computed, onMounted, onUnmounted } from "vue";

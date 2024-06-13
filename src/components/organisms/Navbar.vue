@@ -25,7 +25,7 @@ onUnmounted(() => mediaQuery.removeEventListener("change", update));
         role="navigation"
     >
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Learnispirits</a>
+            <a class="navbar-brand" href="/">Learnispirits</a>
             <!-- 「data-bs-target」="#切り替え表示されるコンテンツ名" -->
             <!-- 「aria-controls」="切り替え表示されるコンテンツ名" -->
             <button
